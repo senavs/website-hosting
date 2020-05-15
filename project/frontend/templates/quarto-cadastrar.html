@@ -1,0 +1,44 @@
+{% extends 'base.html' %}
+
+{% block content %}
+    <h1 class="mt-3">Cadastrar quarto</h1>
+
+    {% with messages = get_flashed_messages(with_categories=true) %}
+        {% if messages %}
+            {% for category, message in messages %}
+                <div class="alert alert-{{ category }} alert-dismissible fade show" role="alert">
+                    {{ message }}
+                    <button type="button" class="close" data-dismiss="alert" aria-label="Close">
+                        <span aria-hidden="true">&times;</span>
+                    </button>
+                </div>
+            {% endfor %}
+        {% endif %}
+    {% endwith %}
+
+    <form method="post" action="{{ url_for('quarto.cadastrar') }}">
+        <div class="form-row">
+            <div class="form-group col-md-6">
+                <label for="nu_quarto">Número do quarto</label>
+                <input id="nu_quarto" name="nu_quarto" class="form-control" type="text" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="in_disponivel">Quarto disponível?</label>
+                <select id="in_disponivel" name="in_disponivel" class="form-control" required>
+                    <option value="0">Não</option>
+                    <option value="1">Sim</option>
+                </select>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="id_tipo_quarto">Tipo do quarto</label>
+                <select id="id_tipo_quarto" name="id_tipo_quarto" class="form-control" required>
+                    {% for tipo in tipo_quarto %}
+                        <option value="{{ tipo['ID'] }}">{{ tipo['NO_TIPO_QUARTO'] }} - R$ {{ tipo['VL_DIARIA'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Salvar</button>
+    </form>
+
+{% endblock content%}
