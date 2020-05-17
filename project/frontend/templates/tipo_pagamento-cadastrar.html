@@ -1,0 +1,17 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Cadastrar novo tipo de pagamento</h1>
+    {{ flash() }}
+
+    <form action="{{ url_for('tipo_pagamento.cadastrar') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="NO_TIPO_PAGAMENTO">Tipo de pagamento</label>
+                <input id="NO_TIPO_PAGAMENTO" name="NO_TIPO_PAGAMENTO" class="form-control" type="text" placeholder="Nome do tipo de pagamento" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+{% endblock content%}

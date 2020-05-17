@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Deletar tipo de pagamento</h1>
+    {{ flash() }}
+
+    <form action="{{ url_for('tipo_pagamento.deletar') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="ID_TIPO_PAGAMENTO">Tipo de pagamento</label>
+                <select id="ID_TIPO_PAGAMENTO" name="ID_TIPO_PAGAMENTO" class="form-control" required>
+                    {% for tipo in tipo_pagamento %}
+                        <option value="{{ tipo['ID_TIPO_PAGAMENTO'] }}">{{ tipo['NO_TIPO_PAGAMENTO'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Deletar</button>
+    </form>
+{% endblock content%}

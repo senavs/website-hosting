@@ -7,6 +7,8 @@
     {% else %}
         <title>Hospedar.com</title>
     {% endif %}
+
+    <!--bootstrap4-->
     <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0/css/bootstrap.min.css" integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
     <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js" integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN" crossorigin="anonymous"></script>
     <script src="https://cdnjs.cloudflare.com/ajax/libs/popper.js/1.12.9/umd/popper.min.js" integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q" crossorigin="anonymous"></script>
@@ -15,70 +17,16 @@
 <body>
     <!--navbar-->
     <nav class="navbar navbar-expand-md navbar-light bg-primary">
-
         <!--logo-->
         <a class="navbar-brand text-white" href="{{ url_for('main.home') }}">Hospedar.com</a>
-
         <!--toggle button-->
         <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
             <span class="navbar-toggler-icon"></span>
         </button>
-
-        <!--links-->
-        <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav mr-auto">
-                <!--home page-->
-                <li class="nav-item">
-                    <a class="nav-link text-white" href="{{ url_for('main.home') }}">Home</a>
-                </li>
-                <!--funcionario-->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbar-dropdown-funcionario" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Funcionário
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbar-dropdown-funcionario">
-                        <a class="dropdown-item" href="#">Listar</a>
-                        <a class="dropdown-item" href="#">Cadastrar</a>
-                    </div>
-                </li>
-                <!--hospede-->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbar-dropdown-hospede" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Hospede
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbar-dropdown-hospede">
-                        <a class="dropdown-item" href="#">Listar</a>
-                        <a class="dropdown-item" href="#">Cadastrar</a>
-                        <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">Criar família</a>
-                    </div>
-                </li>
-                <!--quarto-->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbar-dropdown-quarto" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Quarto
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbar-dropdown-quarto">
-                        <a class="dropdown-item" href="{{ url_for('quarto.listar') }}">Listar</a>
-                        <a class="dropdown-item" href="{{ url_for('quarto.cadastrar') }}">Cadastrar</a>
-                        <a class="dropdown-item" href="{{ url_for('quarto.alterar-disponibilizade') }}">Alterar disponibilidade</a>
-                        <a class="dropdown-item" href="{{ url_for('quarto.deletar') }}">Deletar</a>
-                    </div>
-                </li>
-                <!--hospedagem-->
-                <li class="nav-item dropdown">
-                    <a class="nav-link dropdown-toggle text-white" href="#" id="navbar-dropdown-hospedagem" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                        Hospedagem
-                    </a>
-                    <div class="dropdown-menu" aria-labelledby="navbar-dropdown-quarto">
-                        <a class="dropdown-item" href="#">Listar</a>
-                        <a class="dropdown-item" href="#">Cadastrar</a>
-                    </div>
-                </li>
-            </ul>
-        </div>
     </nav>
-    <div class="container">
+
+    <!--content-->
+    <div class="container mt-3">
         {% block content %} {% endblock content %}
     </div>
 </body>

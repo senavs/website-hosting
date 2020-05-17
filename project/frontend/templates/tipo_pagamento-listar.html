@@ -1,0 +1,24 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Tipos de pagamento</h1>
+    {{ flash() }}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Tipo de pagamento</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for tipo in tipo_pagamento %}
+            <tr>
+                <td scope="row">{{ tipo['ID_TIPO_PAGAMENTO'] }}</td>
+                <td>{{ tipo['NO_TIPO_PAGAMENTO'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content%}

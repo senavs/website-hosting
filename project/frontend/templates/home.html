@@ -1,6 +1,65 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1 class="mt-3">Hospodar.com</h1>
-    <h3>Sistema para controle de quartos do seu hotel!</h3>
+    <h1>Hospedagem</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">Hospedagem</li>
+                <a class="list-group-item list-group-item-action disabled" href="#">Listar</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Cadastrar</a>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">Hóspede</li>
+                <a class="list-group-item list-group-item-action disabled" href="#">Listar</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Cadastrar</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Alterar dados</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Deletar</a>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">Tipo de pagamento</li>
+                <a class="list-group-item list-group-item-action" href="{{ url_for('tipo_pagamento.listar') }}">Listar</a>
+                <a class="list-group-item list-group-item-action" href="{{ url_for('tipo_pagamento.cadastrar') }}">Cadastrar</a>
+                <a class="list-group-item list-group-item-action" href="{{ url_for('tipo_pagamento.deletar') }}">Deletar</a>
+            </ul>
+        </div>
+    </div>
+
+    <h1>Quarto</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">Quarto</li>
+                <a class="list-group-item list-group-item-action disabled" href="#">Listar</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Cadastrar</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Alterar disponibilidade</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Deletar</a>
+            </ul>
+        </div>
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">Tipo de quarto</li>
+                <a class="list-group-item list-group-item-action disabled" href="#">Listar</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Cadastrar</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Deletar</a>
+            </ul>
+        </div>
+    </div>
+
+    <h1>Funcionário</h1>
+    <div class="row">
+        <div class="col-md-4">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">Funcionário</li>
+                <a class="list-group-item list-group-item-action disabled" href="#">Listar</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Cadastrar</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Alterar dados</a>
+                <a class="list-group-item list-group-item-action disabled" href="#">Deletar</a>
+            </ul>
+        </div>
+    </div>
 {% endblock content%}
