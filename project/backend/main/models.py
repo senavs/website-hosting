@@ -36,9 +36,12 @@ class Database:
             return self.cursor_to_dict(self._connection.execute(f'SELECT * FROM {self.__tablename__};'))
         raise ProgrammingError('ProgrammingError: Cannot operate on a closed database.')
 
-    def select_all_by(self, **kwargs):
+    def select_all_by(self, and_operator=True, **kwargs):
         if self._connection:
-            filters = ' AND '.join(f'{key} = {value}'.upper() for key, value in kwargs.items())
+            if and_operator:
+                filters = ' AND '.join(f'{key} = {value}'.upper() for key, value in kwargs.items())
+            else:
+                filters = ' OR '.join(f'{key} = {value}'.upper() for key, value in kwargs.items())
             return self.cursor_to_dict(self._connection.execute(f'SELECT * FROM {self.__tablename__} WHERE {filters};'))
         raise ProgrammingError('ProgrammingError: Cannot operate on a closed database.')
 

@@ -1,7 +1,8 @@
 import os
 from abc import ABC
 
-BASE_DIR = os.path.dirname(os.path.dirname(__file__))
+PROJECT_DIR = os.path.dirname(__file__)
+BASE_DIR = os.path.dirname(PROJECT_DIR)
 DATABASE_URL = os.environ.get('DATABASE_URL', os.path.join(BASE_DIR, 'database', 'sqlite', 'hopedar-dev.sqlite'))
 
 
