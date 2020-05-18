@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Deletar quarto</h1>
+    {{ flash() }}
+
+    <form action="{{ url_for('quarto.deletar') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="ID_QUARTO">Número do quarto</label>
+                <select id="ID_QUARTO" name="ID_QUARTO" class="form-control" required>
+                    {% for quarto in quartos %}
+                        <option value="{{ quarto['ID_QUARTO'] }}">{{ quarto['NU_QUARTO'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Deletar</button>
+    </form>
+{% endblock content%}

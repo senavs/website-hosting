@@ -1,0 +1,34 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Quartos</h1>
+    {{ flash() }}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">Número do quarto</th>
+            <th scope="col">Disponível</th>
+            <th scope="col">Tipo do quarto</th>
+            <th scope="col">Valor da diária</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for quarto in quarto_tipo_quarto %}
+            <tr>
+                <td scope="row">{{ quarto['ID_QUARTO'] }}</td>
+                <td>{{ quarto['NU_QUARTO'] }}</td>
+                {% if quarto['IN_DISPONIVEL'] %}
+                    <td>SIM</td>
+                {% else %}
+                    <td>NÃO</td>
+                {% endif %}
+                <td>{{ quarto['NO_TIPO_QUARTO'] }}</td>
+                <td>{{ quarto['VL_DIARIA'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content%}
