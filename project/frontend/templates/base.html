@@ -25,9 +25,9 @@
             <span class="navbar-toggler-icon"></span>
         </button>
 
-        <!--Hospedagem-->
         <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav mr-auto">
+                <!--Hospedagem-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Hospedagem
@@ -37,6 +37,8 @@
                         <a class="dropdown-item" href="#">Cadastrar</a>
                     </div>
                 </li>
+
+                <!--Hóspede-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Hóspede
@@ -48,6 +50,8 @@
                         <a class="dropdown-item" href="#">Deletar</a>
                     </div>
                 </li>
+
+                <!--Tipo de pagamento-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Tipo de pagamento
@@ -58,6 +62,8 @@
                         <a class="dropdown-item" href="{{ url_for('tipo_pagamento.deletar') }}">Deletar</a>
                     </div>
                 </li>
+
+                <!--Quarto-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Quarto
@@ -70,6 +76,8 @@
 
                     </div>
                 </li>
+
+                <!--Tipo de quarto-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Tipo de quarto
@@ -77,10 +85,12 @@
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
                         <a class="dropdown-item" href="{{ url_for('tipo_quarto.listar') }}">Listar</a>
                         <a class="dropdown-item" href="{{ url_for('tipo_quarto.cadastrar') }}">Cadastrar</a>
-                        <a class="dropdown-item" href="#">Alterar valor</a>
-                        <a class="dropdown-item" href="#">Deletar</a>
+                        <a class="dropdown-item" href="{{ url_for('tipo_quarto.alterar') }}">Alterar valor</a>
+                        <a class="dropdown-item" href="{{ url_for('tipo_quarto.deletar') }}">Deletar</a>
                     </div>
                 </li>
+
+                <!--Funcionário-->
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                         Funcionário
