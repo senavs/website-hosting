@@ -24,6 +24,7 @@ def cadastrar():
                 db.insert(request.form['NO_TIPO_PAGAMENTO'])
             except (DatabaseException, OperationalError, IntegrityError) as err:
                 flash(str(err), 'danger')
+                db.rollback()
                 return redirect(url_for('tipo_pagamento.cadastrar'))
             else:
                 db.commit()
@@ -38,9 +39,11 @@ def deletar():
                 db.delete(request.form['ID_TIPO_PAGAMENTO'])
             except (DatabaseException, OperationalError, IntegrityError) as err:
                 flash(str(err), 'danger')
+                db.rollback()
                 return redirect(url_for('tipo_pagamento.deletar'))
             else:
                 db.commit()
+                db.rollback()
                 flash('Deletado com sucesso', 'success')
         tipo_pagamento = db.select_all()
     return render_template('tipo_pagamento-deletar.html', tipo_pagamento=tipo_pagamento)

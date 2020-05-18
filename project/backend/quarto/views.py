@@ -28,6 +28,7 @@ def cadastrar():
                 db.insert(request.form['NU_QUARTO'], request.form['IN_DISPONIVEL'], request.form['ID_TIPO_QUARTO'])
             except (DatabaseException, OperationalError, IntegrityError) as err:
                 flash(str(err), 'danger')
+                db.rollback()
                 return redirect(url_for('quarto.cadastrar'))
             else:
                 db.commit()
@@ -42,6 +43,7 @@ def alterar():
                 db.update(request.form['ID_QUARTO'], request.form['IN_DISPONIVEL'])
             except (DatabaseException, OperationalError, IntegrityError) as err:
                 flash(str(err), 'danger')
+                db.rollback()
                 return redirect(url_for('quarto.alterar'))
             else:
                 db.commit()
@@ -57,6 +59,7 @@ def deletar():
                 db.delete(request.form['ID_QUARTO'])
             except (DatabaseException, OperationalError, IntegrityError) as err:
                 flash(str(err), 'danger')
+                db.rollback()
                 return redirect(url_for('quarto.deletar'))
             else:
                 db.commit()

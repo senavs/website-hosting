@@ -28,12 +28,15 @@ class Database:
     def commit(self):
         self._connection.commit()
 
+    def rollback(self):
+        self._connection.rollback()
+
     def cursor_to_dict(self, cursors: Iterable):
         return [dict(zip(self.__tablecolumns__, cursor)) for cursor in cursors]
 
     def select_all(self):
         if self._connection:
-            return self.cursor_to_dict(self._connection.execute(f'SELECT * FROM {self.__tablename__};'))
+            return self.cursor_to_dict(self._connection.execute(f'SELECT * FROM "{self.__tablename__}" ;'))
         raise ProgrammingError('ProgrammingError: Cannot operate on a closed database.')
 
     def select_all_by(self, and_operator=True, **kwargs):
@@ -42,7 +45,7 @@ class Database:
                 filters = ' AND '.join(f'{key} = {value}'.upper() for key, value in kwargs.items())
             else:
                 filters = ' OR '.join(f'{key} = {value}'.upper() for key, value in kwargs.items())
-            return self.cursor_to_dict(self._connection.execute(f'SELECT * FROM {self.__tablename__} WHERE {filters};'))
+            return self.cursor_to_dict(self._connection.execute(f'SELECT * FROM "{self.__tablename__}" WHERE {filters} ;'))
         raise ProgrammingError('ProgrammingError: Cannot operate on a closed database.')
 
 

@@ -25,5 +25,5 @@ def home():
         'qt_quartos_disp': qt_quartos_disp,
         'qt_quartos_indisp': qt_quartos_indisp
     }
-    print(context)
+
     return render_template('home.html', **context)

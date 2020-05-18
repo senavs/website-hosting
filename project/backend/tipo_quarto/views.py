@@ -24,6 +24,7 @@ def cadastrar():
                 db.insert(request.form['NO_TIPO_QUARTO'], request.form['VL_DIARIA'])
             except (DatabaseException, OperationalError, IntegrityError) as err:
                 flash(str(err), 'danger')
+                db.rollback()
                 return redirect(url_for('tipo_quarto.cadastrar'))
             else:
                 db.commit()
@@ -39,6 +40,7 @@ def alterar():
                 db.update(request.form['ID_TIPO_QUARTO'], request.form['VL_DIARIA'])
             except (DatabaseException, OperationalError, IntegrityError) as err:
                 flash(str(err), 'danger')
+                db.rollback()
                 return redirect(url_for('tipo_quarto.alterar'))
             else:
                 db.commit()
@@ -53,6 +55,7 @@ def deletar():
                 db.delete(request.form['ID_TIPO_QUARTO'])
             except (DatabaseException, OperationalError, IntegrityError) as err:
                 flash(str(err), 'danger')
+                db.rollback()
                 return redirect(url_for('tipo_quarto.deletar'))
             else:
                 db.commit()
