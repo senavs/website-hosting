@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Deletar funcionário</h1>
+    {{ flash() }}
+
+    <form action="{{ url_for('funcionario.deletar') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="ID_FUNCIONARIO-ID_ENDERECO">CPF - Nome do funcionario</label>
+                <select id="ID_FUNCIONARIO-ID_ENDERECO" name="ID_FUNCIONARIO-ID_ENDERECO" class="form-control" required>
+                    {% for funcionario in funcionarios %}
+                        <option value="{{ funcionario['ID_FUNCIONARIO'] }}-{{ funcionario['ID_ENDERECO'] }}">{{ funcionario['NU_CPF'] }} - {{ funcionario['NO_FUNCIONARIO'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Deletar</button>
+    </form>
+{% endblock content%}

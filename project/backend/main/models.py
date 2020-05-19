@@ -5,7 +5,7 @@ from typing import Iterable
 
 # NOT USING ORM BECAUSE OF THE PROJECT REQUIREMENTS
 class Database:
-    _connection = None
+    _connection = _cursor = None
     __tablename__ = None
     __tablecolumns__ = []
 
@@ -19,8 +19,22 @@ class Database:
     def __exit__(self, exc_type, exc_val, exc_tb):
         self.close()
 
+    @property
+    def cursor(self):
+        return self._cursor
+
+    def insert(self, *args, **kwargs):
+        raise NotImplementedError()
+
+    def update(self, *args, **kwargs):
+        raise NotImplementedError()
+
+    def delete(self, *args, **kwargs):
+        raise NotImplementedError()
+
     def open(self):
         self._connection = sqlite3.connect(self.url)
+        self._cursor = self._connection.cursor()
 
     def close(self):
         self._connection.close()
@@ -36,7 +50,7 @@ class Database:
 
     def select_all(self):
         if self._connection:
-            return self.cursor_to_dict(self._connection.execute(f'SELECT * FROM "{self.__tablename__}" ;'))
+            return self.cursor_to_dict(self.cursor.execute(f'SELECT * FROM "{self.__tablename__}" ;'))
         raise ProgrammingError('ProgrammingError: Cannot operate on a closed database.')
 
     def select_all_by(self, and_operator=True, **kwargs):
@@ -45,7 +59,7 @@ class Database:
                 filters = ' AND '.join(f'{key} = {value}'.upper() for key, value in kwargs.items())
             else:
                 filters = ' OR '.join(f'{key} = {value}'.upper() for key, value in kwargs.items())
-            return self.cursor_to_dict(self._connection.execute(f'SELECT * FROM "{self.__tablename__}" WHERE {filters} ;'))
+            return self.cursor_to_dict(self.cursor.execute(f'SELECT * FROM "{self.__tablename__}" WHERE {filters} ;'))
         raise ProgrammingError('ProgrammingError: Cannot operate on a closed database.')
 
 

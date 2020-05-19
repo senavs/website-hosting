@@ -96,10 +96,10 @@
                         Funcionário
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Listar</a>
-                        <a class="dropdown-item" href="#">Cadastrar</a>
-                        <a class="dropdown-item" href="#">Alterar dados</a>
-                        <a class="dropdown-item" href="#">Deletar</a>
+                        <a class="dropdown-item" href="{{ url_for('funcionario.listar') }}">Listar</a>
+                        <a class="dropdown-item" href="{{ url_for('funcionario.cadastrar') }}">Cadastrar</a>
+                        <a class="dropdown-item" href="{{ url_for('funcionario.pesquisar') }}">Alterar dados</a>
+                        <a class="dropdown-item" href="{{ url_for('funcionario.deletar') }}">Deletar</a>
                     </div>
                 </li>
             </ul>

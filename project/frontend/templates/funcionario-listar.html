@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Funcionários</h1>
+    {{ flash() }}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col"> | </th>
+            <th scope="col">CEP</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Complemento</th>
+            <th scope="col">Número</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for funcionario in funcionarios %}
+            <tr>
+                <td scope="row">{{ funcionario['ID_FUNCIONARIO'] }}</td>
+                <td>{{ funcionario['NU_CPF'] }}</td>
+                <td>{{ funcionario['NO_FUNCIONARIO'] }}</td>
+                <td>{{ funcionario['NU_TELEFONE'] }}</td>
+                <td>{{ funcionario['NO_EMAIL'] }}</td>
+                <td> | </td>
+                <td>{{ funcionario['NU_CEP'] }}</td>
+                <td>{{ funcionario['NO_ENDERECO'] }}</td>
+                <td>{{ funcionario['NO_COMPLEMENTO'] }}</td>
+                <td>{{ funcionario['NU_NUMERO'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content%}

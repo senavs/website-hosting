@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Selecione um funcionário para editar</h1>
+    {{ flash() }}
+
+    <form action="{{ url_for('funcionario.pesquisar') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="ID_FUNCIONARIO">CPF - Nome do funcionario</label>
+                <select id="ID_FUNCIONARIO" name="ID_FUNCIONARIO" class="form-control" required>
+                    {% for funcionario in funcionarios %}
+                        <option value="{{ funcionario['ID_FUNCIONARIO'] }}">{{ funcionario['NU_CPF'] }} - {{ funcionario['NO_FUNCIONARIO'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Selecionar</button>
+    </form>
+{% endblock content%}
