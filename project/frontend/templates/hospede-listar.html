@@ -1,0 +1,40 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Hóspedes</h1>
+    {{ flash() }}
+
+    <table class="table">
+        <thead>
+        <tr>
+            <th scope="col">#</th>
+            <th scope="col">CPF</th>
+            <th scope="col">Nome</th>
+            <th scope="col">Telefone</th>
+            <th scope="col">E-Mail</th>
+            <th scope="col"> | </th>
+            <th scope="col">CEP</th>
+            <th scope="col">Endereço</th>
+            <th scope="col">Complemento</th>
+            <th scope="col">Número</th>
+        </tr>
+        </thead>
+        <tbody>
+        {% for hospede in hospedes %}
+            <tr>
+                <td scope="row">{{ hospede['ID_HOSPEDE'] }}</td>
+                <td>{{ hospede['NU_CPF'] }}</td>
+                <td>{{ hospede['NO_HOSPEDE'] }}</td>
+                <td>{{ hospede['NU_TELEFONE'] }}</td>
+                <td>{{ hospede['NO_EMAIL'] }}</td>
+                <td> | </td>
+                <td>{{ hospede['NU_CEP'] }}</td>
+                <td>{{ hospede['NO_ENDERECO'] }}</td>
+                <td>{{ hospede['NO_COMPLEMENTO'] }}</td>
+                <td>{{ hospede['NU_NUMERO'] }}</td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+{% endblock content%}

@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Selecione um hóspede para editar</h1>
+    {{ flash() }}
+
+    <form action="{{ url_for('hospede.pesquisar') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="ID_HOSPEDE">CPF - Nome do hóspede</label>
+                <select id="ID_HOSPEDE" name="ID_HOSPEDE" class="form-control" required>
+                    {% for hospede in hospedes %}
+                        <option value="{{ hospede['ID_HOSPEDE'] }}">{{ hospede['NU_CPF'] }} - {{ hospede['NO_HOSPEDE'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Selecionar</button>
+    </form>
+{% endblock content%}

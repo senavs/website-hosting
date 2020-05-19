@@ -1,0 +1,45 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Cadastrar novo hóspede</h1>
+    {{ flash() }}
+
+    <form action="{{ url_for('hospede.cadastrar') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-8">
+                <label for="NO_HOSPEDE">Nome do hóspede</label>
+                <input id="NO_HOSPEDE" name="NO_HOSPEDE" class="form-control" type="text" placeholder="Nome do hóspede" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="NU_CPF">CPF</label>
+                <input id="NU_CPF" name="NU_CPF" class="form-control" type="text" placeholder="CPF do hóspede" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="NO_EMAIL">E-Mail</label>
+                <input id="NO_EMAIL" name="NO_EMAIL" class="form-control" type="email" placeholder="E-Mail do hóspede" required>
+            </div>
+            <div class="form-group col-md-6">
+                <label for="NU_TELEFONE">Telefone</label>
+                <input id="NU_TELEFONE" name="NU_TELEFONE" class="form-control" type="tel" placeholder="Telefone do hóspede" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="NU_CEP">CEP</label>
+                <input id="NU_CEP" name="NU_CEP" class="form-control" type="text" placeholder="CEP do hóspede" required>
+            </div>
+            <div class="form-group col-md-8">
+                <label for="NO_ENDERECO">Endereço</label>
+                <input id="NO_ENDERECO" name="NO_ENDERECO" class="form-control" type="text" placeholder="Endereço do hóspede" required>
+            </div>
+            <div class="form-group col-md-8">
+                <label for="NO_COMPLEMENTO">Complemento</label>
+                <input id="NO_COMPLEMENTO" name="NO_COMPLEMENTO" class="form-control" type="text" placeholder="Complemento do endereço" required>
+            </div>
+            <div class="form-group col-md-4">
+                <label for="NU_NUMERO">Número</label>
+                <input id="NU_NUMERO" name="NU_NUMERO" class="form-control" type="number" min="1" step="any" placeholder="Número do endereço" required>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+{% endblock content%}

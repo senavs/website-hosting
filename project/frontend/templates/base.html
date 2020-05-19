@@ -44,10 +44,10 @@
                         Hóspede
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="#">Listar</a>
-                        <a class="dropdown-item" href="#">Cadastrar</a>
-                        <a class="dropdown-item" href="#">Alterar dados</a>
-                        <a class="dropdown-item" href="#">Deletar</a>
+                        <a class="dropdown-item" href="{{ url_for('hospede.listar') }}">Listar</a>
+                        <a class="dropdown-item" href="{{ url_for('hospede.cadastrar') }}">Cadastrar</a>
+                        <a class="dropdown-item" href="{{ url_for('hospede.pesquisar') }}">Alterar dados</a>
+                        <a class="dropdown-item" href="{{ url_for('hospede.deletar') }}">Deletar</a>
                     </div>
                 </li>
 

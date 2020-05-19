@@ -6,6 +6,7 @@ from .backend.funcionario import app_funcionario
 from .backend.tipo_quarto import app_tipo_quarto
 from .backend.quarto import app_quarto
 from .backend.tipo_pagamento import app_tipo_pagamento
+from .backend.hospede import app_hospede
 
 
 def create_app(config_name: str = 'develop'):
@@ -23,5 +24,6 @@ def create_app(config_name: str = 'develop'):
     app.register_blueprint(app_tipo_quarto)
     app.register_blueprint(app_quarto)
     app.register_blueprint(app_tipo_pagamento)
+    app.register_blueprint(app_hospede)
 
     return app
