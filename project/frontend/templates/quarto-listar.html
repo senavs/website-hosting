@@ -10,7 +10,6 @@
         <tr>
             <th scope="col">#</th>
             <th scope="col">Número do quarto</th>
-            <th scope="col">Disponível</th>
             <th scope="col">Tipo do quarto</th>
             <th scope="col">Valor da diária</th>
         </tr>
@@ -20,11 +19,6 @@
             <tr>
                 <td scope="row">{{ quarto['ID_QUARTO'] }}</td>
                 <td>{{ quarto['NU_QUARTO'] }}</td>
-                {% if quarto['IN_DISPONIVEL'] %}
-                    <td>SIM</td>
-                {% else %}
-                    <td>NÃO</td>
-                {% endif %}
                 <td>{{ quarto['NO_TIPO_QUARTO'] }}</td>
                 <td>{{ quarto['VL_DIARIA'] }}</td>
             </tr>
