@@ -36,7 +36,7 @@
                         Hospedagem
                     </a>
                     <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-                        <a class="dropdown-item" href="{{ url_for('hospedagem.listar') }}">Listar</a>
+                        <a class="dropdown-item" href="{{ url_for('hospedagem.pesquisar') }}">Pesquisar</a>
                         <a class="dropdown-item" href="{{ url_for('hospedagem.cadastrar') }}">Cadastrar</a>
                         <a class="dropdown-item" href="{{ url_for('hospedagem.alterar') }}">Alterar</a>
                     </div>
@@ -103,6 +103,19 @@
                         <a class="dropdown-item" href="{{ url_for('funcionario.cadastrar') }}">Cadastrar</a>
                         <a class="dropdown-item" href="{{ url_for('funcionario.pesquisar') }}">Alterar dados</a>
                         <a class="dropdown-item" href="{{ url_for('funcionario.deletar') }}">Deletar</a>
+                    </div>
+                </li>
+
+                <!--Relatórios-->
+                <li class="nav-item dropdown">
+                    <a class="nav-link dropdown-toggle text-white" href="#" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                        Relatórios
+                    </a>
+                    <div class="dropdown-menu" aria-labelledby="navbarDropdown">
+                        <a class="dropdown-item" href="#">Quartos disponíveis</a>
+                        <a class="dropdown-item" href="#">Quartos indisponíveis</a>
+                        <a class="dropdown-item" href="#">Hospedagens ativas</a>
+                        <a class="dropdown-item" href="#">Rank dos funcionários</a>
                     </div>
                 </li>
             </ul>

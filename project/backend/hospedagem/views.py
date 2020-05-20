@@ -1,3 +1,4 @@
+from datetime import datetime
 from sqlite3 import OperationalError, IntegrityError
 
 from flask import request, render_template, url_for, redirect, flash, session
@@ -10,7 +11,7 @@ from ..tipo_pagamento.views import TipoPagamentoModel
 from ...configuration import DATABASE_URL
 
 
-def listar():
+def pesquisar():
     with HospedagemDetalhadaView(DATABASE_URL) as db:
         hospedagens = db.select_all()
         hospedagem = None
@@ -19,10 +20,11 @@ def listar():
         with HospedagemDetalhadaView(DATABASE_URL) as db:
             hospedagem = db.select_all_by(id_hospedagem=request.form['ID_HOSPEDAGEM'])[0]
 
-    return render_template('hospedagem-listar.html', hospedagens=hospedagens, hospedagem=hospedagem)
+    return render_template('hospedagem-pesquisar.html', hospedagens=hospedagens, hospedagem=hospedagem)
 
 
 def cadastrar():
+    data_hoje = datetime.now().strftime('%d/%m/%Y')
     if request.method == 'POST':
         with HospedagemModel(DATABASE_URL) as db:
             try:
@@ -53,7 +55,8 @@ def cadastrar():
         'funcionarios': funcionarios,
         'quartos': quartos,
         'tipo_pagamento': tipo_pagamento,
-        'hospedes': hospedes
+        'hospedes': hospedes,
+        'data_hoje': data_hoje
     }
     return render_template('hospedagem-cadastrar.html', **context)
 

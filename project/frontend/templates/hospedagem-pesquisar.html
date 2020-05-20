@@ -8,7 +8,7 @@
     <form action="{{ url_for('hospedagem.listar') }}" method="POST">
         <div class="form-row">
             <div class="form-group col">
-                <label for="ID_HOSPEDAGEM">CPF - Nome do hóspede</label>
+                <label for="ID_HOSPEDAGEM">ID - Data de entrada</label>
                 <select id="ID_HOSPEDAGEM" name="ID_HOSPEDAGEM" class="form-control" required>
                     {% for hospedagem in hospedagens %}
                         <option value="{{ hospedagem['ID_HOSPEDAGEM'] }}">{{ hospedagem['ID_HOSPEDAGEM'] }} - {{ hospedagem['DT_ENTRADA'] }}</option>
