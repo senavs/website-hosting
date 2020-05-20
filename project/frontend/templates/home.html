@@ -139,5 +139,17 @@
                 {% endfor %}
             </ul>
         </div>
+
+        <!--Quarto mais requisitados-->
+        <div class="col-md-6 mt-3">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">3 Quartos mais requisitados pelos clientes</li>
+                {% for rank in rank_quarto[:3] %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                        {{ loop.index }}º - {{ rank['NU_QUARTO'] }}<span class="badge badge-warning badge-pill">{{ rank['QT_HOSPEDAGEM'] }}</span>
+                    </li>
+                {% endfor %}
+            </ul>
+        </div>
     </div>
 {% endblock content%}

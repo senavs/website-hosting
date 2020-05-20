@@ -29,3 +29,8 @@ class QuartoDisponivelView(Database):
 class QuartoIndisponivelView(Database):
     __tablename__ = 'VW_QUARTO_INDISPONIVEL'
     __tablecolumns__ = ['ID_QUARTO', 'NU_QUARTO', 'ID_TIPO_QUARTO', 'NO_TIPO_QUARTO', 'VL_DIARIA']
+
+
+class RankQuartoView(Database):
+    __tablename__ = 'VW_RANK_QUARTO'
+    __tablecolumns__ = ['ID_QUARTO', 'NU_QUARTO', 'QT_HOSPEDAGEM']

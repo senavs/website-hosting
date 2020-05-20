@@ -1,6 +1,6 @@
 from flask import make_response, render_template, url_for, abort, redirect
 
-from ..quarto.models import QuartoTipoQuartView, QuartoDisponivelView, QuartoIndisponivelView
+from ..quarto.models import QuartoTipoQuartView, QuartoDisponivelView, QuartoIndisponivelView, RankQuartoView
 from ..funcionario.models import FuncionarioEnderecoView, RankFuncionarioView
 from ..hospede.models import HospedeEnderecoView
 from ..hospedagem.models import HospedagemModel, HospedagemTotalAtivo, HospedagemTotalReceber, HospedagemTotalRecebido
@@ -51,6 +51,10 @@ def home():
     with RankFuncionarioView(DATABASE_URL) as db:
         rank_funcionario = db.select_all()
 
+    # rank de quarto RankQuartoView
+    with RankQuartoView(DATABASE_URL) as db:
+        rank_quarto = db.select_all()
+
     context = {
         'qt_quartos': qt_quartos,
         'qt_quartos_disp': qt_quartos_disp,
@@ -65,7 +69,8 @@ def home():
         'ids_hospedagem_ativa': ids_hospedagem_ativa,
         'nu_quartos_disp': nu_quartos_disp,
         'nu_quartos_indisp': nu_quartos_indisp,
-        'rank_funcionario': rank_funcionario
+        'rank_funcionario': rank_funcionario,
+        'rank_quarto': rank_quarto
     }
 
     return render_template('home.html', **context)
