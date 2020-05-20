@@ -5,10 +5,18 @@
     <div class="row">
         <div class="col-md-4 mt-3">
             <ul class="list-group">
-                <li class="list-group-item bg-info text-white">Hospedagem <span class="badge badge-warning">X</span></li>
-                <li class="list-group-item list-group-item-action disabled">Ativas - X</li>
-                <li class="list-group-item list-group-item-action disabled">Total a receber - X</li>
-                <li class="list-group-item list-group-item-action disabled">Total recebido - X</li>
+                <li class="list-group-item bg-info text-white">Hospedagem <span class="badge badge-warning">{{ qt_hospedagem }}</span></li>
+                <li class="list-group-item list-group-item-action disabled">Ativas - {{ qt_hospedagem_ativo }}</li>
+                {% if qt_hospedagem_receber %}
+                    <li class="list-group-item list-group-item-action disabled">Total a receber - R$ {{ qt_hospedagem_receber }}</li>
+                {% else %}
+                    <li class="list-group-item list-group-item-action disabled">Total a receber - R$ 0.0</li>
+                {% endif %}
+                {% if qt_hospedagem_recebido %}
+                    <li class="list-group-item list-group-item-action disabled">Total recebido - R$ {{ qt_hospedagem_recebido }}</li>
+                {% else %}
+                    <li class="list-group-item list-group-item-action disabled">Total recebido - R$ 0.0</li>
+                {% endif %}
             </ul>
         </div>
         <div class="col-md-4 mt-3">
