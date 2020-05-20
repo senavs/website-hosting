@@ -40,3 +40,8 @@ class FuncionarioEnderecoView(Database):
     __tablename__ = 'VW_FUNCIONARIO_ENDERECO'
     __tablecolumns__ = ['ID_FUNCIONARIO', 'NU_CPF', 'NO_FUNCIONARIO', 'NU_TELEFONE', 'NO_EMAIL',
                         'ID_ENDERECO', 'NU_CEP', 'NO_ENDERECO', 'NO_COMPLEMENTO', 'NU_NUMERO']
+
+
+class RankFuncionarioView(Database):
+    __tablename__ = 'VW_RANK_FUNCIONARIO'
+    __tablecolumns__ = ['ID_FUNCIONARIO', 'NU_CPF', 'NO_FUNCIONARIO', 'QT_HOSPEDAGEM']

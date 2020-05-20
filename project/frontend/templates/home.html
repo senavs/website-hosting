@@ -1,36 +1,142 @@
 {% extends 'base.html' %}
 
 {% block content %}
-    <h1>Dashboard</h1>
     <div class="row">
-        <div class="col-md-4 mt-3">
+        <!--Title-->
+        <div class="col-md-12 mt-3">
+            <h3 class="border-bottom border-info text-info">
+                Overview
+            </h3>
+        </div>
+
+        <!--Hospedagem-->
+        <div class="col-md-6 mt-3">
             <ul class="list-group">
-                <li class="list-group-item bg-info text-white">Hospedagem <span class="badge badge-warning">{{ qt_hospedagem }}</span></li>
-                <li class="list-group-item list-group-item-action disabled">Ativas - {{ qt_hospedagem_ativo }}</li>
-                {% if qt_hospedagem_receber %}
-                    <li class="list-group-item list-group-item-action disabled">Total a receber - R$ {{ qt_hospedagem_receber }}</li>
-                {% else %}
-                    <li class="list-group-item list-group-item-action disabled">Total a receber - R$ 0.0</li>
-                {% endif %}
-                {% if qt_hospedagem_recebido %}
-                    <li class="list-group-item list-group-item-action disabled">Total recebido - R$ {{ qt_hospedagem_recebido }}</li>
-                {% else %}
-                    <li class="list-group-item list-group-item-action disabled">Total recebido - R$ 0.0</li>
-                {% endif %}
+                <li class="list-group-item bg-info text-white">Hospedagem</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Total <span class="badge badge-warning badge-pill">{{ qt_hospedagem }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Ativo <span class="badge badge-warning badge-pill">{{ qt_hospedagem_ativo }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Total a receber
+                    <span class="badge badge-warning badge-pill">
+                        {% if qt_hospedagem_receber %}
+                            R$ {{ qt_hospedagem_receber }}
+                        {% else %}
+                            R$ 0.0
+                        {% endif %}
+                    </span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Total recebido
+                    <span class="badge badge-warning badge-pill">
+                        {% if qt_hospedagem_recebido %}
+                            R$ {{ qt_hospedagem_recebido }}
+                        {% else %}
+                            R$ 0.0
+                        {% endif %}
+                    </span>
+                </li>
             </ul>
         </div>
-        <div class="col-md-4 mt-3">
+
+        <!--Quartos-->
+        <div class="col-md-3 mt-3">
             <ul class="list-group">
-                <li class="list-group-item bg-info text-white">Quartos <span class="badge badge-warning">{{ qt_quartos }}</span></li>
-                <li class="list-group-item list-group-item-action disabled">Disponíveis - {{ qt_quartos_disp }}</li>
-                <li class="list-group-item list-group-item-action disabled">Reservados - {{ qt_quartos_indisp }}</li>
+                <li class="list-group-item bg-info text-white">Quartos</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Total <span class="badge badge-warning badge-pill">{{ qt_quartos }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Disponível <span class="badge badge-warning badge-pill">{{ qt_quartos_disp }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Reservado <span class="badge badge-warning badge-pill">{{ qt_quartos_indisp }}</span>
+                </li>
             </ul>
         </div>
-        <div class="col-md-4 mt-3">
+
+        <!--Pessoas-->
+        <div class="col-md-3 mt-3">
             <ul class="list-group">
-                <li class="list-group-item bg-info text-white">Pessoas <span class="badge badge-warning">{{ qt_pessoas }}</span></li>
-                <li class="list-group-item list-group-item-action disabled">Hóspedes - {{ qt_hospedes }}</li>
-                <li class="list-group-item list-group-item-action disabled">Funcionários - {{ qt_funcionarios }}</li>
+                <li class="list-group-item bg-info text-white">Pessoas</li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Cadastrado <span class="badge badge-warning badge-pill">{{ qt_pessoas }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Hóspedes <span class="badge badge-warning badge-pill">{{ qt_hospedes }}</span>
+                </li>
+                <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                    Hóspedes <span class="badge badge-warning badge-pill">{{ qt_funcionarios }}</span>
+                </li>
+            </ul>
+        </div>
+    </div>
+
+    <div class="row">
+        <!--Title-->
+        <div class="col-md-12 mt-3">
+            <h3 class="border-bottom border-info text-info">
+                Detalhado
+            </h3>
+        </div>
+
+        <!--Hospedagem-->
+        <div class="col-md-12 mt-3">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">ID de hospedagens ativas</li>
+            </ul>
+            <li class="list-group-item justify-content-between align-items-center disabled">
+                {% for id_hospedagem_ativa in ids_hospedagem_ativa %}
+                    <span class="badge badge-warning badge-pill">{{ id_hospedagem_ativa }}</span>
+                {% endfor %}
+            </li>
+        </div>
+
+        <!--Quartos disponíveis-->
+        <div class="col-md-6 mt-3">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">Quartos disponíveis</li>
+            </ul>
+            <li class="list-group-item justify-content-between align-items-center disabled">
+                {% for nu_quarto_disp in nu_quartos_disp %}
+                    <span class="badge badge-warning badge-pill">{{ nu_quarto_disp }}</span>
+                {% endfor %}
+            </li>
+        </div>
+
+        <!--Quartos indisponíveis-->
+        <div class="col-md-6 mt-3">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">Quartos indisponíveis</li>
+            </ul>
+            <li class="list-group-item justify-content-between align-items-center disabled">
+                {% for nu_quarto_indisp in nu_quartos_indisp %}
+                    <span class="badge badge-warning badge-pill">{{ nu_quarto_indisp }}</span>
+                {% endfor %}
+            </li>
+        </div>
+    </div>
+
+    <div class="row">
+        <!--Title-->
+        <div class="col-md-12 mt-3">
+            <h3 class="border-bottom border-info text-info">
+                Rank
+            </h3>
+        </div>
+
+        <!--Hospedagem-->
+        <div class="col-md-6 mt-3">
+            <ul class="list-group">
+                <li class="list-group-item bg-info text-white">3 Funcionários que mais atenderam</li>
+                {% for rank in rank_funcionario[:3] %}
+                    <li class="list-group-item d-flex justify-content-between align-items-center disabled">
+                        {{ loop.index }}º - {{ rank['NO_FUNCIONARIO'] }}<span class="badge badge-warning badge-pill">{{ rank['QT_HOSPEDAGEM'] }}</span>
+                    </li>
+                {% endfor %}
             </ul>
         </div>
     </div>
