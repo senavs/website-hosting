@@ -1,0 +1,93 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Hospedagens</h1>
+    {{ flash() }}
+
+    <form action="{{ url_for('hospedagem.listar') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col">
+                <label for="ID_HOSPEDAGEM">CPF - Nome do hóspede</label>
+                <select id="ID_HOSPEDAGEM" name="ID_HOSPEDAGEM" class="form-control" required>
+                    {% for hospedagem in hospedagens %}
+                        <option value="{{ hospedagem['ID_HOSPEDAGEM'] }}">{{ hospedagem['ID_HOSPEDAGEM'] }} - {{ hospedagem['DT_ENTRADA'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+        </div>
+        <button type="submit" class="btn btn-primary">Selecionar</button>
+    </form>
+
+    <br><br>
+
+    {% if hospedagem %}
+        <form>
+            <div class="form-row">
+                <div class="form-group col-md-12">
+                    <label>Funcionário / Atendente</label>
+                    <input class="form-control" type="text" value="{{ hospedagem['NO_FUNCIONARIO'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label>Número do quarto</label>
+                    <input class="form-control" type="text" value="{{ hospedagem['NU_QUARTO'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label>Tipo de pagamento</label>
+                    <input class="form-control" type="text" value="{{ hospedagem['NO_TIPO_PAGAMENTO'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label>Data de entrada</label>
+                    <input class="form-control" type="text" value="{{ hospedagem['DT_ENTRADA'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-12">
+                    <label>Nome do hóspede (Titular)</label>
+                    <input class="form-control" type="text" value="{{ hospedagem['NO_HOSPEDE_TITULAR'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label>Nome do hóspede 1º acompanhante</label>
+                    <input class="form-control" type="text" value="{{ hospedagem['NO_HOSPEDE_ACOMPANHANTE_1'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label>Nome do hóspede 3º acompanhante</label>
+                    <input class="form-control" type="text" value="{{ hospedagem['NO_HOSPEDE_ACOMPANHANTE_2'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-4">
+                    <label>Nome do hóspede 3º acompanhante</label>
+                    <input class="form-control" type="text" value="{{ hospedagem['NO_HOSPEDE_ACOMPANHANTE_2'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label>Ativo</label>
+                    {% if hospedagem['IN_ATIVO'] %}
+                        <input class="form-control" type="text" value="SIM" disabled>
+                    {% else %}
+                        <input class="form-control" type="text" value="NÃO" disabled>
+                    {% endif %}
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label>Valor do quarto</label>
+                    <input class="form-control" type="text" value="R$ {{ hospedagem['VL_DIARIA'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label>Quantidade de noites</label>
+                    <input class="form-control" type="text" value="{{ hospedagem['NU_NOITE'] }}" disabled>
+                </div>
+
+                <div class="form-group col-md-3">
+                    <label>Valor a pagar</label>
+                    <input class="form-control" type="text" value="R$ {{ hospedagem['VL_HOSPEDAGEM'] }}" disabled>
+                </div>
+            </div>
+        </form>
+    {% endif %}
+{% endblock content%}

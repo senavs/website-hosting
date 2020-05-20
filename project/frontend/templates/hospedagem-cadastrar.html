@@ -1,0 +1,89 @@
+{% extends 'base.html' %}
+{% from 'macros.html' import flash %}
+
+{% block content %}
+    <h1>Cadastrar nova hospedagem</h1>
+    {{ flash() }}
+
+    <form action="{{ url_for('hospedagem.cadastrar') }}" method="POST">
+        <div class="form-row">
+            <div class="form-group col-md-12">
+                <label for="ID_FUNCIONARIO">Funcionário / Atendente</label>
+                <select id="ID_FUNCIONARIO" name="ID_FUNCIONARIO" class="form-control" required>
+                    {% for funcionario in funcionarios %}
+                        <option value="{{ funcionario['ID_FUNCIONARIO'] }}">{{ funcionario['NU_CPF'] }} - {{ funcionario['NO_FUNCIONARIO'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="ID_QUARTO">Número do quarto</label>
+                <select id="ID_QUARTO" name="ID_QUARTO" class="form-control" required>
+                    {% for quarto in quartos %}
+                        <option value="{{ quarto['ID_QUARTO'] }}">{{ quarto['NU_QUARTO'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="ID_TIPO_PAGAMENTO">Tipo de pagamento</label>
+                <select id="ID_TIPO_PAGAMENTO" name="ID_TIPO_PAGAMENTO" class="form-control" required>
+                    {% for tipo in tipo_pagamento %}
+                        <option value="{{ tipo['ID_TIPO_PAGAMENTO'] }}">{{ tipo['NO_TIPO_PAGAMENTO'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="DT_ENTRADA">Data de entrada</label>
+                <input id="DT_ENTRADA" name="DT_ENTRADA" class="form-control" type="text" placeholder="DD/MM/YYYY" required>
+            </div>
+
+            <div class="form-group col-md-3">
+                <label for="NU_NOITE">Quantidade de noites</label>
+                <input id="NU_NOITE" name="NU_NOITE" class="form-control" type="number" min="1" step="any" placeholder="Quantidade de noites" required>
+            </div>
+
+            <div class="form-group col-md-12">
+                <label for="ID_HOSPEDE_TITULAR">Nome do hóspede (Titular)</label>
+                <select id="ID_HOSPEDE_TITULAR" name="ID_HOSPEDE_TITULAR" class="form-control" required>
+                    {% for hospede in hospedes %}
+                        <option value="{{ hospede['ID_HOSPEDE'] }}">{{ hospede['NU_CPF'] }} - {{ hospede['NO_HOSPEDE'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="ID_HOSPEDE_ACOMPANHANTE_1">Nome do hóspede 1º acompanhante</label>
+                <select id="ID_HOSPEDE_ACOMPANHANTE_1" name="ID_HOSPEDE_ACOMPANHANTE_1" class="form-control">
+                    <option value=NULL> --- </option>
+                    {% for hospede in hospedes %}
+                        <option value="{{ hospede['ID_HOSPEDE'] }}">{{ hospede['NU_CPF'] }} - {{ hospede['NO_HOSPEDE'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="ID_HOSPEDE_ACOMPANHANTE_2">Nome do hóspede 2º acompanhante</label>
+                <select id="ID_HOSPEDE_ACOMPANHANTE_2" name="ID_HOSPEDE_ACOMPANHANTE_2" class="form-control">
+                    <option value=NULL> --- </option>
+                    {% for hospede in hospedes %}
+                        <option value="{{ hospede['ID_HOSPEDE'] }}">{{ hospede['NU_CPF'] }} - {{ hospede['NO_HOSPEDE'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+            <div class="form-group col-md-4">
+                <label for="ID_HOSPEDE_ACOMPANHANTE_3">Nome do hóspede 3º acompanhante</label>
+                <select id="ID_HOSPEDE_ACOMPANHANTE_3" name="ID_HOSPEDE_ACOMPANHANTE_3" class="form-control">
+                    <option value=NULL> --- </option>
+                    {% for hospede in hospedes %}
+                        <option value="{{ hospede['ID_HOSPEDE'] }}">{{ hospede['NU_CPF'] }} - {{ hospede['NO_HOSPEDE'] }}</option>
+                    {% endfor %}
+                </select>
+            </div>
+
+        </div>
+        <button type="submit" class="btn btn-primary">Cadastrar</button>
+    </form>
+{% endblock content%}
